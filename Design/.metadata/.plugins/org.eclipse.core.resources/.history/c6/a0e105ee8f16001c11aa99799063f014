@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_4OMkYBKsEeyjGIQBNoKd1g" name="aPAS">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_4SQlABKsEeyjGIQBNoKd1g">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_GlxGkBaBEeypgdK-BTWx7A" name="Calendar">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Y0MJYBaCEeypgdK-BTWx7A" name="authenticate"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_cN5QIBaCEeypgdK-BTWx7A" name="retrieveEvents"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_k9groBaCEeypgdK-BTWx7A" name="updateEvent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mZuyABaCEeypgdK-BTWx7A" name="addEvent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_n3284BaCEeypgdK-BTWx7A" name="deleteEvent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sWE0oBaCEeypgdK-BTWx7A" name="createNewUnscheduledCalendar"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_J_nXQBaBEeypgdK-BTWx7A" name="Google Calendar">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_NIZQoBaCEeypgdK-BTWx7A" name="Authenticate"/>
+  </packagedElement>
+</uml:Model>
