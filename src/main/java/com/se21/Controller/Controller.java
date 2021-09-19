@@ -1,11 +1,13 @@
 package com.se21.Controller;
+import com.se21.Calendar.Enums;
+import org.json.simple.JSONObject;
 
 public class Controller {
 
     String clientId;
-    String calendarType;
+    Enums.calendarType calendarId;
     String calendarToken; //check later
-    String operationId;
+    Enums.operationType operationId;
 
     public void initDb()
     {
@@ -19,9 +21,10 @@ public class Controller {
     {
 
     }
-    public void arrangeEvents()
+    public JSONObject arrangeEvents(JSONObject events)
     {
 
+        return null;
     }
     public void dataOperation()
     {

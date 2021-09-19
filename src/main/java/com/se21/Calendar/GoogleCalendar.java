@@ -1,5 +1,7 @@
 package com.se21.Calendar;
 
+import org.json.simple.JSONObject;
+
 public class GoogleCalendar implements Calendar{
 
     String accessToken;
@@ -7,32 +9,38 @@ public class GoogleCalendar implements Calendar{
     String authToken;
 
     @Override
-    public void authenticate() {
+    public JSONObject authenticate(JSONObject auth) {
 
+        return null;
     }
 
     @Override
-    public void retrieveEvents() {
+    public JSONObject retrieveEvents(JSONObject req) {
 
+        return null;
     }
 
     @Override
-    public void updateEvents() {
+    public Enums.calApiResponse updateEvents(JSONObject req) {
 
+        return Enums.calApiResponse.Success;
     }
 
     @Override
-    public void addEvents() {
+    public Enums.calApiResponse addEvents() {
 
+        return Enums.calApiResponse.Success;
     }
 
     @Override
-    public void deleteEvents() {
+    public Enums.calApiResponse deleteEvents() {
 
+        return Enums.calApiResponse.Success;
     }
 
     @Override
-    public void createNewUnscheduledCalendar() {
+    public Enums.calApiResponse createNewUnscheduledCalendar() {
 
+        return Enums.calApiResponse.Success;
     }
 }

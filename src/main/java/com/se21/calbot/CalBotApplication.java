@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CalBotApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(CalBotApplication.class, args);
+    public static void main(String[] args) { SpringApplication.run(CalBotApplication.class, args);
     }
 
 }
