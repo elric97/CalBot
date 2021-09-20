@@ -2,9 +2,11 @@ package com.se21.Calendar;
 
 import org.json.simple.JSONObject;
 
-public interface Calendar {
+import java.security.GeneralSecurityException;
 
-    JSONObject authenticate(JSONObject auth);
+public interface mainCalendar {
+
+    void authenticate() throws Exception;
     JSONObject retrieveEvents(JSONObject req);
     Enums.calApiResponse updateEvents(JSONObject req);
     Enums.calApiResponse addEvents();
