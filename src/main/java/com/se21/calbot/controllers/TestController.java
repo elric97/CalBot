@@ -3,17 +3,14 @@ package com.se21.calbot.controllers;
 import com.se21.calbot.GoogleCalendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/test")
+@RestController
+@CrossOrigin(origins = "*")
 public class TestController {
-    @Autowired
-    GoogleCalendar googleCalendar;
 
-    @GetMapping()
-    public void AuthenticateTest() throws Exception {
-        googleCalendar.authenticate();
+    @RequestMapping(value = "/ping", method = RequestMethod.GET)
+    public String AuthenticateTest() throws Exception {
+        return "ping pong";
     }
 }

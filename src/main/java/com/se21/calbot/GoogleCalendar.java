@@ -1,5 +1,7 @@
 package com.se21.calbot;
 
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
@@ -46,10 +48,14 @@ public class GoogleCalendar {
                 .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
                 .setAccessType("offline")
                 .build();
-        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
+        String url = flow.newAuthorizationUrl().setRedirectUri("http://localhost:8080/test").build();
+        LocalServerReceiver receiver = new LocalServerReceiver();
+//        Credential auth = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+//        System.out.println(auth.getAccessToken());
+//        auth.`
 
 //        GoogleAuthorizationCodeRequestUrl url = flow.newAuthorizationUrl();
-        System.out.println(flow.newAuthorizationUrl().toString());
+        System.out.println(url);
 //        return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
 //        return null;
     }
