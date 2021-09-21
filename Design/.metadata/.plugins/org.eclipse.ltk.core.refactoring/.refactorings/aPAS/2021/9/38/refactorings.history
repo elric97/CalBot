@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;aPAS/aPAS.di&apos; to &apos;class_Diagram.di&apos;" description="Rename resource &apos;aPAS.di&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="aPAS.di" name="class_Diagram.di" stamp="1631765675540" updateReferences="true"/>
+</session>

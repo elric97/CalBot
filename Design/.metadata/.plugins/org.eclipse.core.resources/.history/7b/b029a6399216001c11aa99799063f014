@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_4OMkYBKsEeyjGIQBNoKd1g" name="aPAS">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_4SQlABKsEeyjGIQBNoKd1g">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_GlxGkBaBEeypgdK-BTWx7A" name="Calendar">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_kmePMBaDEeypgdK-BTWx7A" name="accessToken">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_mPuE8BaDEeypgdK-BTWx7A" name="refreshToken">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Y0MJYBaCEeypgdK-BTWx7A" name="authenticate"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_cN5QIBaCEeypgdK-BTWx7A" name="retrieveEvents"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_k9groBaCEeypgdK-BTWx7A" name="updateEvent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mZuyABaCEeypgdK-BTWx7A" name="addEvent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_n3284BaCEeypgdK-BTWx7A" name="deleteEvent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sWE0oBaCEeypgdK-BTWx7A" name="createNewUnscheduledCalendar"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_J_nXQBaBEeypgdK-BTWx7A" name="Google Calendar" visibility="public">
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_9NvqcBaEEeypgdK-BTWx7A" name="Google Calendar" visibility="public"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_0ts8ABaEEeypgdK-BTWx7A" client="_J_nXQBaBEeypgdK-BTWx7A" supplier="_GlxGkBaBEeypgdK-BTWx7A"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9YlogBaEEeypgdK-BTWx7A" name="Apple Calendar" visibility="public"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_EWU2sBaFEeypgdK-BTWx7A" client="_9YlogBaEEeypgdK-BTWx7A" supplier="_4OMkYBKsEeyjGIQBNoKd1g"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FYuu4BaFEeypgdK-BTWx7A" name="Samsung Calendar" visibility="public"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_LFrDkBaFEeypgdK-BTWx7A" client="_FYuu4BaFEeypgdK-BTWx7A" supplier="_GlxGkBaBEeypgdK-BTWx7A"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_X-MOIBaFEeypgdK-BTWx7A" name="clientManager">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iFYHQBaKEeypgdK-BTWx7A" name="id">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_mTGvIBaOEeypgdK-BTWx7A" name="clientId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_nEMnIBaJEeypgdK-BTWx7A" name="update"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_oS5O4BaJEeypgdK-BTWx7A" name="add"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qf1AgBaJEeypgdK-BTWx7A" name="delete"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_sAdFwBaJEeypgdK-BTWx7A" name="show"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5pZAoBaJEeypgdK-BTWx7A" name="suggestForNow"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_9l3dQBaJEeypgdK-BTWx7A" name="suggestWeeklyUnscheduled"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_X0npIBaKEeypgdK-BTWx7A" name="processInput"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6BgW8BaPEeypgdK-BTWx7A" name="getLastMessageDataObject"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_jP_SgBaFEeypgdK-BTWx7A" name="Discord"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kabsYBaFEeypgdK-BTWx7A" name="Slack"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_lKbl8BaFEeypgdK-BTWx7A" name="Telegram"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_l_pWsBaFEeypgdK-BTWx7A" name="Alexa"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_ymo6IBaKEeypgdK-BTWx7A" client="_jP_SgBaFEeypgdK-BTWx7A" supplier="_X-MOIBaFEeypgdK-BTWx7A"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_2fLR8BaKEeypgdK-BTWx7A" client="_kabsYBaFEeypgdK-BTWx7A" supplier="_X-MOIBaFEeypgdK-BTWx7A"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_3iV_IBaKEeypgdK-BTWx7A" client="_lKbl8BaFEeypgdK-BTWx7A" supplier="_X-MOIBaFEeypgdK-BTWx7A"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_5Rr10BaKEeypgdK-BTWx7A" client="_l_pWsBaFEeypgdK-BTWx7A" supplier="_X-MOIBaFEeypgdK-BTWx7A"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_d3xB4BaLEeypgdK-BTWx7A" name="Controller">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_pU5XEBaMEeypgdK-BTWx7A" name="clientId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_xv830BaMEeypgdK-BTWx7A" name="calendarType">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_1S-5sBaMEeypgdK-BTWx7A" name="calendarToken">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_UPmtcBaOEeypgdK-BTWx7A" name="operationId">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mzhb8BaLEeypgdK-BTWx7A" name="initDb"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_pkqG0BaLEeypgdK-BTWx7A" name="getCalToken"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_r4bgQBaLEeypgdK-BTWx7A" name="addCalToken"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6IRqIBaLEeypgdK-BTWx7A" name="arrangeEvents"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_hO6HYBaMEeypgdK-BTWx7A" name="dataOperation"/>
+  </packagedElement>
+</uml:Model>
