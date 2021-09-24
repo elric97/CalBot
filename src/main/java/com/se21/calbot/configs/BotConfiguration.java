@@ -12,8 +12,8 @@ import java.util.List;
 
 @Component
 public class BotConfiguration {
-    @Value("${bot.token}")
-    private String botToken;
+    // @Value("${token}")
+    private String botToken = "ODg5MjI2NTgwMzkwNDYxNDkx.YUeKyQ.6veYA1eF8JEVMtgenPSs2WtEJSQ";
 
     @Bean
     public <T extends Event> GatewayDiscordClient gatewayDiscordClient(List<EventListener<T>> eventListeners) {

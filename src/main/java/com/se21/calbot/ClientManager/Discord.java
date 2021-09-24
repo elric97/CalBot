@@ -1,9 +1,20 @@
-package com.se21.ClientManager;
+package com.se21.calbot.ClientManager;
 
+import com.se21.calbot.Controller.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class Discord implements ClientManager{
 
     String userId;
     String clientId;
+
+    final Controller controllerObj;
+
+    public Discord(Controller controllerObj) {
+        this.controllerObj = controllerObj;
+    }
 
     @Override
     public void update() {

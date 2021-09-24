@@ -1,4 +1,4 @@
-package com.se21.Calendar;
+package com.se21.calbot.Calendar;
 
 public class Enums {
 
