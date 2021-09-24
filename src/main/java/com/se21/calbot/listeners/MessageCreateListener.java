@@ -5,8 +5,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import java.net.URISyntaxException;
-
 @Component
 public class MessageCreateListener extends MessageListener implements EventListener<MessageCreateEvent> {
     @Override

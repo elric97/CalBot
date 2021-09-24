@@ -1,5 +1,4 @@
-package com.se21.calbot.ClientManager;
-
+package com.se21.ClientManager;
 
 public interface ClientManager {
 
