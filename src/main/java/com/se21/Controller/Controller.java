@@ -1,5 +1,5 @@
 package com.se21.Controller;
-import com.se21.Calendar.Enums;
+import com.se21.calbot.enums.Enums;
 import org.json.simple.JSONObject;
 
 public class Controller {
