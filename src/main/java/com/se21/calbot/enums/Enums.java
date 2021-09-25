@@ -22,6 +22,7 @@ public class Enums {
         Update,
         Delete,
         Create,
+        Retrieve,
 
     }
 }

@@ -7,7 +7,7 @@ public interface Calendar {
 
     String authenticate(String id);
     void saveAccessToken(String code, String id);
-    JSONObject retrieveEvents(JSONObject req) throws Exception;
+    org.json.JSONObject retrieveEvents() throws Exception;
     Enums.calApiResponse updateEvents(JSONObject req);
     Enums.calApiResponse addEvents();
     Enums.calApiResponse deleteEvents();

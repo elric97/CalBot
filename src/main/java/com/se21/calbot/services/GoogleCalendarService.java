@@ -9,24 +9,28 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.calendar.CalendarScopes;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Collections;
-import java.util.List;
-
-
-import com.google.api.services.calendar.model.Event;
-import com.google.api.services.calendar.model.Events;
 import com.se21.calbot.enums.Enums;
 import com.se21.calbot.interfaces.Calendar;
 import com.se21.calbot.model.User;
 import com.se21.calbot.repositories.TokensRepository;
 import lombok.extern.java.Log;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 @Log
@@ -34,11 +38,12 @@ public class GoogleCalendarService implements Calendar {
 
     @Autowired
     TokensRepository tokensRepository;
-
+    @Autowired
+    User user;
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final  List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR);
-
+    CloseableHttpClient httpClient = HttpClients.createDefault();
     private GoogleClientSecrets clientSecrets;
 
     @Override
@@ -88,13 +93,17 @@ public class GoogleCalendarService implements Calendar {
                 return;
             }
 
+            System.out.println(response.getAccessToken());
             //save code and token in db mapped to discord id
-            tokensRepository.save(new User(discordId,
+            //Keep one local copy(caching) for current instance
+
+            user.setAuthResponseBeans(discordId,
                     response.getAccessToken(),
                     authCode,
                     response.getExpiresInSeconds(),
                     "",
-                    response.getScope()));
+                    response.getScope(), "Google");
+            tokensRepository.save(user);
 
         } catch (Exception e) {
             log.severe("Google access token exception - " + e.getMessage());
@@ -102,7 +111,26 @@ public class GoogleCalendarService implements Calendar {
     }
 
     @Override
-    public JSONObject retrieveEvents(JSONObject req) throws Exception {
+    public org.json.JSONObject retrieveEvents() throws Exception {
+        String access_token = user.getToken();
+        String url = "https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=20&access_token=" + access_token;
+        HttpGet request = new HttpGet(url);
+
+
+        try (CloseableHttpResponse response = httpClient.execute(request)) {
+            HttpEntity entity = response.getEntity();
+            String content;
+            if (entity != null) {
+                content = EntityUtils.toString(entity);
+                org.json.JSONObject obj = new org.json.JSONObject(content);
+                System.out.println(obj.toString());
+                return obj;
+            }
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
