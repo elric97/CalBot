@@ -18,19 +18,22 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Collections;
 import java.util.List;
+
+import static com.se21.calbot.enums.Enums.calApiResponse.Failure;
+import static com.se21.calbot.enums.Enums.calApiResponse.Success;
 
 @Service
 @Log
@@ -65,8 +68,7 @@ public class GoogleCalendarService implements Calendar {
                     .setAccessType("offline")
                     .build();
 
-            String url = flow.newAuthorizationUrl().setRedirectUri("http://localhost:8080/test").setState(discordId).build();
-            return url;
+            return flow.newAuthorizationUrl().setRedirectUri("http://localhost:8080/test").setState(discordId).build();
         } catch (Exception e) {
             log.severe("Google auth URL exception - " + e.getMessage());
         }
@@ -93,7 +95,6 @@ public class GoogleCalendarService implements Calendar {
                 return;
             }
 
-            System.out.println(response.getAccessToken());
             //save code and token in db mapped to discord id
             //Keep one local copy(caching) for current instance
 
@@ -104,6 +105,12 @@ public class GoogleCalendarService implements Calendar {
                     "",
                     response.getScope(), "Google");
             tokensRepository.save(user);
+
+            //Once we have all the tokens we need to create a calendar to manage unscheduled events
+            //Add condition if calendar already doesn't exist
+
+            if(user.getCalId() == null)
+            createNewUnscheduledCalendar();
 
         } catch (Exception e) {
             log.severe("Google access token exception - " + e.getMessage());
@@ -116,19 +123,14 @@ public class GoogleCalendarService implements Calendar {
         String url = "https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=20&access_token=" + access_token;
         HttpGet request = new HttpGet(url);
 
-
         try (CloseableHttpResponse response = httpClient.execute(request)) {
             HttpEntity entity = response.getEntity();
             String content;
             if (entity != null) {
                 content = EntityUtils.toString(entity);
-                org.json.JSONObject obj = new org.json.JSONObject(content);
-                System.out.println(obj.toString());
-                return obj;
+                return new org.json.JSONObject(content);
             }
         } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
@@ -151,6 +153,33 @@ public class GoogleCalendarService implements Calendar {
 
     @Override
     public Enums.calApiResponse createNewUnscheduledCalendar() {
-        return null;
+
+        String access_token = user.getToken();
+        String url = "https://www.googleapis.com/calendar/v3/calendars";
+        HttpPost request = new HttpPost(url);
+        StringEntity params = null;
+        try {
+            params = new StringEntity("{\"summary\":\"aPAS\"} ");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        request.setEntity(params);
+        request.setHeader("Authorization", "Bearer "+access_token);
+        request.setHeader("Content-Type", "application/json");
+
+
+        try (CloseableHttpResponse response = httpClient.execute(request)) {
+            HttpEntity entity = response.getEntity();
+            String content;
+            if (entity != null) {
+                content = EntityUtils.toString(entity);
+                org.json.JSONObject obj = new org.json.JSONObject(content);
+                user.setCalId(obj.getString("id"));//Need to store this id in Db
+                return Success;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Failure;
     }
 }

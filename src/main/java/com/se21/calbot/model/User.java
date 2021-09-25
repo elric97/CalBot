@@ -38,7 +38,8 @@ public class User {
     private String scope;
     @Column(name = "calType")
     private String calType;
-
+    @Column(name = "calId")
+    private String calId;
 
     public void setAuthResponseBeans(String discordId, String token, String code, Long expiresInSeconds, String refreshToken, String scope, String calType)
     {
