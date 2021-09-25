@@ -5,10 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Tokens")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Tokens")
 @JsonSerialize
 @Getter
 @Setter
@@ -18,9 +22,14 @@ public class User {
 
     @Id
     private String discordId;
+    @Column(name = "token")
     private String token;
+    @Column(name = "code")
     private String code;
+    @Column(name = "expires")
     private Long expiresInSeconds;
+    @Column(name = "refresh")
     private String refreshToken;
+    @Column(name = "scope")
     private String scope;
 }
