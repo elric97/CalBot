@@ -18,3 +18,30 @@ Architecture:
 
 Initial class diagram for product(considering future prospects):
 ![image](https://user-images.githubusercontent.com/16212546/133550846-e297d9f2-9907-4174-b1ec-d261a8b1353f.png)
+
+## Future Scope 🐾
+There are multiple dimensions to this project catering to the interests of
+Various developers
+
+### If you are front-end developer 💻
+Currently aPAS has been configured to work with Discord as the GUI but given the structure of the project it can be easily extended for other platforms such as
+* Telegram (add links probably!)
+* WhatsApp
+* Facebook 
+
+### If you are a back-end developer 🛠️
+Why just stop at Google calendar? Why not make it more user-friendly for all users with various calendars such as:
+* Samsung Calendar
+* Apple calendar
+Extending aPAS for these will require addition of service classes for these calendars
+
+### If you are an ML Enthusiast 🧑‍🔬
+* Why not use a voice-bot to set and manage events,Implementing this using an audio model can be an interesting extension to the project.
+* The priority algorithm can be personalized for a user based on the amount of time they spend on a particular task. 
+
+## Team Members
+Aditi Bhagwat
+Anumit Garg
+Palvit Garg
+Rachit Sharma
+Shree Ramasubramanian
