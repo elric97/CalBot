@@ -5,9 +5,11 @@
 # aPAS - A Personal Agile Scheduler
 
 ## Introduction 😁
-Have you ever wondered how easy it would be if there was someone to help you manage your mundane tasks in a better way? If you have then aPAS has got you covered!
-
-Do you ever want to find time for Leetcode and workouts amidst a very busy week full of assignments but just can’t? Our discord bot will look into your existing schedule and will further help you handle such unscheduled tasks. How will it do that? It will show you the exact amount of workload pending on your plate and time left before the deadline. This makes scheduling such unscheduled events very easy. 
+* Have you ever wondered how easy it would be if there was someone to help you manage your mundane tasks in a better way? If you have then aPAS has got you covered!
+* Today, many companies use agile methodology for software development. What has proven to be the most effective is the use of a sprint model. 
+* This model gives the true picture of how much of an assignment load someone has and how to further manage it. We bring to you exactly that to manage your everyday tasks with our discord bot.
+* Do you ever want to find time for Leetcode and workouts amidst a very busy week full of assignments but just can’t? Our discord bot will look into your existing schedule and will further help you handle such unscheduled tasks. 
+* How will it do that? It will show you the exact amount of workload pending on your plate and time left before the deadline. This makes scheduling such unscheduled events very easy. 
 
 
 Architecture:
