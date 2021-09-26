@@ -21,7 +21,7 @@ Initial class diagram for product(considering future prospects):
 
 ## Future Scope 🐾
 There are multiple dimensions to this project catering to the interests of
-Various developers
+Various developers. Please check [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for contributing rules
 
 ### If you are a front-end developer 💻
 Currently aPAS has been configured to work with Discord as the GUI but given the structure of the project it can be easily extended for other platforms such as
@@ -40,8 +40,8 @@ Extending aPAS for these will require addition of service classes for these cale
 * The priority algorithm can be personalized for a user based on the amount of time they spend on a particular task. 
 
 ## Team Members
-Aditi Bhagwat
-Anumit Garg
-Palvit Garg
-Rachit Sharma
-Shree Ramasubramanian
+* Aditi Bhagwat
+* Anumit Garg
+* Palvit Garg
+* Rachit Sharma
+* Shree Ramasubramanian
