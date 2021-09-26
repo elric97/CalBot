@@ -23,6 +23,7 @@ public class Enums {
         Delete,
         Create,
         Retrieve,
+        Optimise,
 
     }
 }

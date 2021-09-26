@@ -1,4 +1,4 @@
-package com.se21.ClientManager;
+package com.se21.calbot.ClientManager;
 
 public interface ClientManager {
 
@@ -8,6 +8,6 @@ public interface ClientManager {
     void show();
     void suggestForNow();
     void suggestWeeklyUnscheduled();
-    void processInput();
+    String processInput(String msg);
     void getLastMessageDataObject();
 }

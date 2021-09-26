@@ -23,12 +23,17 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,7 +59,6 @@ public class GoogleCalendarService implements Calendar {
 
         try {
             // Load client secrets.
-
             InputStream in = GoogleCalendarService.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
             if (in == null) {
                 throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
@@ -97,7 +101,6 @@ public class GoogleCalendarService implements Calendar {
 
             //save code and token in db mapped to discord id
             //Keep one local copy(caching) for current instance
-
             user.setAuthResponseBeans(discordId,
                     response.getAccessToken(),
                     authCode,
@@ -107,7 +110,7 @@ public class GoogleCalendarService implements Calendar {
             tokensRepository.save(user);
 
             //Once we have all the tokens we need to create a calendar to manage unscheduled events
-            //Add condition if calendar already doesn't exist
+            //Add condition if calendar already doesn't exist in the list of user accessible calendars
 
             if(user.getCalId() == null)
             createNewUnscheduledCalendar();
@@ -118,10 +121,11 @@ public class GoogleCalendarService implements Calendar {
     }
 
     @Override
-    public org.json.JSONObject retrieveEvents() throws Exception {
+    public org.json.JSONObject retrieveEvents(String calId) throws Exception {
         String access_token = user.getToken();
-        String url = "https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=20&access_token=" + access_token;
+        String url = "https://www.googleapis.com/calendar/v3/calendars/" + calId + "/events?maxResults=20&access_token=" + access_token;
         HttpGet request = new HttpGet(url);
+        //Todo: Add a filter to get events from now until end of current week only
 
         try (CloseableHttpResponse response = httpClient.execute(request)) {
             HttpEntity entity = response.getEntity();
@@ -141,9 +145,57 @@ public class GoogleCalendarService implements Calendar {
         return null;
     }
 
+    public JSONObject createAddEventBody(DateTime startDt, DateTime endDt, String title)
+    {
+        JSONObject jsonEnd = new JSONObject();
+        JSONObject jsonBody = new JSONObject();
+        JSONObject jsonStart = new JSONObject();
+
+        jsonEnd.put("dateTime", endDt.toString());
+        jsonBody.put("end", jsonEnd);
+
+        jsonStart.put("dateTime", startDt.toString());
+        jsonBody.put("start", jsonStart);
+        jsonBody.put("summary", title);
+        return jsonBody;
+    }
+
     @Override
-    public Enums.calApiResponse addEvents() {
-        return null;
+    public Enums.calApiResponse addEvents(String title, String hours, String deadline) {
+        DateTime startDt = DateTime.now();
+        DateTimeFormatter f = DateTimeFormat.forPattern("MM/dd/yyyy");
+        DateTime endDt = f.parseDateTime(deadline);
+
+        String url = "https://www.googleapis.com/calendar/v3/calendars/"+user.getCalId() + "/events";
+        HttpPost request = new HttpPost(url);
+        request.setHeader("Authorization", "Bearer "+user.getToken());
+        request.setHeader("Content-Type", "application/json");
+
+        StringEntity body = null;
+
+        try {
+            body = new StringEntity(this.createAddEventBody(startDt, endDt, title +"#"+ hours).toString());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        body.setContentType("application/json");
+        request.setEntity(body);
+
+        try (CloseableHttpResponse response = httpClient.execute(request)) {
+
+            HttpEntity entity = response.getEntity();
+            String content;
+            if (entity != null) {
+                content = EntityUtils.toString(entity);
+                org.json.JSONObject obj = new org.json.JSONObject(content);
+                return Success;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return Success;
     }
 
     @Override
