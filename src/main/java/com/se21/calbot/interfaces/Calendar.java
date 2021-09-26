@@ -14,4 +14,5 @@ public interface Calendar {
     Enums.calApiResponse deleteEvents();
     Enums.calApiResponse createNewUnscheduledCalendar();
 
+    void setUserVariable();
 }
