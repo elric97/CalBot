@@ -18,6 +18,14 @@ Architecture:
 Initial class diagram for product(considering future prospects):
 ![image](https://user-images.githubusercontent.com/16212546/133550846-e297d9f2-9907-4174-b1ec-d261a8b1353f.png)
 
+## Getting started with
+* Java8 
+* PostgreSQL - We have used [Postgress](https://www.postgresql.org) as our database, it can be set locally as well as on cloud
+* Google Cloud Platform - We used Google calendar API by creating a project on [GCP](https://developers.google.com/workspace/guides/create-project), Check [Quickstart](https://developers.google.com/calendar/api/quickstart/java) for setting up Google calendar APIs. The ./Credentials.json of the project is required for authenticating the user.
+* Discord Developer Application -We created a [Discord Developer profile](https://discord.com/developers/docs/intro) for configuring a Discord BOT 
+* Environment variables can be found at [applications.properties](/src/main/resources/application.properties)
+* Credentials need to be updated at [credentials.json](/src/main/resources/credentials.json)
+
 ## Future Scope 🐾
 There are multiple dimensions to this project catering to the interests of
 Various developers. Please check [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for contributing rules
