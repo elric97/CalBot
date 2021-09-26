@@ -23,7 +23,7 @@ Initial class diagram for product(considering future prospects):
 There are multiple dimensions to this project catering to the interests of
 Various developers
 
-### If you are front-end developer 💻
+### If you are a front-end developer 💻
 Currently aPAS has been configured to work with Discord as the GUI but given the structure of the project it can be easily extended for other platforms such as
 * Telegram (add links probably!)
 * WhatsApp
