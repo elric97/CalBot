@@ -2,6 +2,7 @@
 [![Made with](https://img.shields.io/badge/Made%20with-Java-blue)](https://www.java.com/en/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
 [![Platform](https://img.shields.io/badge/platform-discord-blue)](https://discord.com/)
+![example workflow](https://github.com/elric97/CalBot/actions/workflows/maven.yml/badge.svg)
 # aPAS - A Personal Agile Scheduler
 
 ## Introduction 😁
