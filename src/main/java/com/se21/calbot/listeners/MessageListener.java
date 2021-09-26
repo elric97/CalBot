@@ -1,18 +1,28 @@
 package com.se21.calbot.listeners;
 
-import com.se21.calbot.services.GoogleCalendarService;
+import ch.qos.logback.core.net.SMTPAppenderBase;
+import com.se21.calbot.ClientManager.ClientManager;
+import com.se21.calbot.controllers.Controller;
+import com.se21.calbot.factories.clientFactory;
+import com.se21.calbot.model.User;
 import discord4j.core.object.entity.Message;
-import discord4j.core.object.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import java.util.Map;
+import static com.se21.calbot.enums.Enums.operationType.Add;
+import static com.se21.calbot.enums.Enums.operationType.Retrieve;
 
 @Service
 public abstract class MessageListener {
+    ClientManager clientObj;
+
     @Autowired
-    GoogleCalendarService googleCalendarService;
+    Controller controller;
+    @Autowired
+    clientFactory clientfactory;
+    @Autowired
+    User user;
 
     public Mono<Void> processCommand(Message eventMessage) {
 
@@ -20,26 +30,20 @@ public abstract class MessageListener {
                 .filter(message -> message.getAuthor().map(user -> !user.isBot()).orElse(false))
                 .map(Message::getContent);
 
-        User author = eventMessage.getAuthor().orElse(null);
+        discord4j.core.object.entity.User author = eventMessage.getAuthor().orElse(null);
         if(author == null)
             return Mono.empty().then();
+        if(eventMessage.getAuthor().map(user -> user.isBot()).orElse(false))
+            return Mono.empty().then();
 
-        String url = getUrl(author.getUsername()+author.getDiscriminator());
+        //No need to make db entry just yet
+        user.setDiscordId(author.getUsername()+author.getDiscriminator());
+        clientObj = clientfactory.getClient("Discord");
+        String response = clientObj.processInput(eventMessage.getContent());
         return Mono.just(eventMessage)
-                .filter(message -> message.getAuthor().map(user -> !user.isBot()).orElse(false))
-                .filter(message -> message.getContent().equalsIgnoreCase("!todo"))
                 .flatMap(Message::getChannel)
-                .flatMap(channel -> channel.createMessage("Your Auth token is " + url ))
+                .flatMap(channel -> channel.createMessage("" + response))
                 .then();
     }
 
-    private String getUrl(String discordId) {
-        try {
-            return googleCalendarService.authenticate(discordId);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        return "";
-    }
 }
