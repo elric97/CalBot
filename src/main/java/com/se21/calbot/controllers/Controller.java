@@ -3,13 +3,23 @@ import com.se21.calbot.enums.Enums;
 import com.se21.calbot.factories.CalendarFactory;
 import com.se21.calbot.interfaces.Calendar;
 import com.se21.calbot.model.User;
+import com.se21.calbot.repositories.TokensRepository;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.SneakyThrows;
+import lombok.extern.java.Log;
 import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+
+@Log
+@Getter
+@Setter
 @Service
 public class Controller {
 
@@ -18,14 +28,25 @@ public class Controller {
     String calendarToken; //check later
     Enums.operationType operationId;
     Calendar calObj;
+
     @Autowired
     CalendarFactory calendarFactory;
     @Autowired
+    TokensRepository tokensRepository;
     User user;
 
-    public void initDb()
+    public void initDb(String discordId)
     {
-
+        user = tokensRepository.findById(discordId).orElse(null);
+        if(user == null)//To add element in db for first time
+        {
+            user = new User(discordId,
+                    "", "",0L, "",
+                    "", "Google","");
+            tokensRepository.save(user);
+        }
+        calObj = calendarFactory.getCalendar("Google");
+        calObj.setUserVariable();
     }
     public void getCalToken()
     {
@@ -35,10 +56,11 @@ public class Controller {
     {
 
     }
+
     //TODO: Change return type to JSON objects
     public String arrangeEvents() throws Exception {
         JSONArray scheduledEventList = calObj.retrieveEvents("primary").getJSONArray("items");
-        JSONArray unScheduledEventList = calObj.retrieveEvents(user.getCalId()).getJSONArray("items");
+        JSONArray unScheduledEventList = calObj.retrieveEvents(this.user.getCalId()).getJSONArray("items");
 
         //Filter events for this week
 
@@ -65,7 +87,6 @@ public class Controller {
     //Todo return type need to be changed to Json objects to make controller and client independent
     @SneakyThrows
     public String dataOperation(Enums.operationType opType, String ... msgParam){
-        calObj = calendarFactory.getCalendar("Google");
         switch(opType)
         {
             case Add:
@@ -106,11 +127,11 @@ public class Controller {
                     }
                     return events;
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.severe("Google auth URL exception - " + e.getMessage());
                 }
             }
 
-
+            break;
             default:
                 throw new IllegalStateException("Unexpected value: " + opType);
         }

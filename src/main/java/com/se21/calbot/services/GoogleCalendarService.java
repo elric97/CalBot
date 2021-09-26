@@ -9,6 +9,7 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.calendar.CalendarScopes;
+import com.se21.calbot.controllers.Controller;
 import com.se21.calbot.enums.Enums;
 import com.se21.calbot.interfaces.Calendar;
 import com.se21.calbot.model.User;
@@ -47,6 +48,8 @@ public class GoogleCalendarService implements Calendar {
     @Autowired
     TokensRepository tokensRepository;
     @Autowired
+    Controller controller;
+
     User user;
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
@@ -54,6 +57,11 @@ public class GoogleCalendarService implements Calendar {
     CloseableHttpClient httpClient = HttpClients.createDefault();
     private GoogleClientSecrets clientSecrets;
 
+    //This is temporary hack, I believe we need one more common authenticator block or something
+    public void setUserVariable()
+    {
+        user = controller.getUser();
+    }
     @Override
     public String authenticate(String discordId) {
 
@@ -99,20 +107,15 @@ public class GoogleCalendarService implements Calendar {
                 return;
             }
 
-            //save code and token in db mapped to discord id
-            //Keep one local copy(caching) for current instance
-            user.setAuthResponseBeans(discordId,
-                    response.getAccessToken(),
-                    authCode,
-                    response.getExpiresInSeconds(),
-                    "",
-                    response.getScope(), "Google");
+            user.setToken(response.getAccessToken());
+            user.setCode(authCode);
+            user.setExpiresInSeconds(response.getExpiresInSeconds());
+            user.setScope(response.getScope());
             tokensRepository.save(user);
-
             //Once we have all the tokens we need to create a calendar to manage unscheduled events
             //Add condition if calendar already doesn't exist in the list of user accessible calendars
 
-            if(user.getCalId() == null)
+            if(user.getCalId().isEmpty())
             createNewUnscheduledCalendar();
 
         } catch (Exception e) {
@@ -132,6 +135,7 @@ public class GoogleCalendarService implements Calendar {
             String content;
             if (entity != null) {
                 content = EntityUtils.toString(entity);
+                System.out.println(content);
                 return new org.json.JSONObject(content);
             }
         } catch (ClientProtocolException e) {
@@ -189,6 +193,7 @@ public class GoogleCalendarService implements Calendar {
             if (entity != null) {
                 content = EntityUtils.toString(entity);
                 org.json.JSONObject obj = new org.json.JSONObject(content);
+                System.out.println(obj);
                 return Success;
             }
         } catch (Exception e) {
@@ -227,6 +232,7 @@ public class GoogleCalendarService implements Calendar {
                 content = EntityUtils.toString(entity);
                 org.json.JSONObject obj = new org.json.JSONObject(content);
                 user.setCalId(obj.getString("id"));//Need to store this id in Db
+
                 return Success;
             }
         } catch (Exception e) {

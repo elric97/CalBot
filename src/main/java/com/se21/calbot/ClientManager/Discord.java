@@ -2,24 +2,34 @@ package com.se21.calbot.ClientManager;
 
 import com.se21.calbot.controllers.Controller;
 import com.se21.calbot.model.User;
+import com.se21.calbot.repositories.TokensRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.se21.calbot.enums.Enums.operationType.*;
 
+
 @Service
 public class Discord implements ClientManager{
 
-    String userId;
     String clientId;
+    User user;
     @Autowired
     Controller controller;
-    @Autowired
-    User user;
 
     @Override
     public void update() {
 
+    }
+
+    @Override
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    @Override
+    public String getClientId() {
+        return clientId;
     }
 
     @Override
@@ -49,6 +59,15 @@ public class Discord implements ClientManager{
 
     @Override
     public String processInput(String msg) {
+        if(controller.getUser() == null )
+        {
+            controller.initDb(clientId);
+            String url = controller.getUrl(clientId, "Google");
+            return "Please authorise aPAS to use your calendar\n" + url + "\n" + "Once done please proceed with below commands" +
+                    "\n\n" + "!event: To see your scheduled events\n" + "!add taskName hoursNeeded deadline(mm/dd/yyy) : To add new event with given details\n" +
+                    "!show: To display tasks you should perform today considering priority of all events";
+        }
+
         String[] commands =msg.split("\n");
         for(String eachCommand: commands)
         {
@@ -66,7 +85,7 @@ public class Discord implements ClientManager{
                 }
                 case "!oauth":
                 {
-                    String url = controller.getUrl(user.getDiscordId(), "Google");
+                    String url = controller.getUrl(clientId, "Google");
                     return "Please authorise aPAS to use your calendar\n" + url + "\n" + "Once done please proceed with below commands" +
                             "\n\n" + "!event: To see your scheduled events\n" + "!add taskName hoursNeeded deadline(mm/dd/yyy) : To add new event with given details\n" +
                             "!show: To display tasks you should perform today considering priority of all events";
