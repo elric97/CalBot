@@ -232,7 +232,7 @@ public class GoogleCalendarService implements Calendar {
                 content = EntityUtils.toString(entity);
                 org.json.JSONObject obj = new org.json.JSONObject(content);
                 user.setCalId(obj.getString("id"));//Need to store this id in Db
-
+                tokensRepository.save(user);
                 return Success;
             }
         } catch (Exception e) {

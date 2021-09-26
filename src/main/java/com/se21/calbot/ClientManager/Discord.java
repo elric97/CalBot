@@ -62,10 +62,12 @@ public class Discord implements ClientManager{
         if(controller.getUser() == null )
         {
             controller.initDb(clientId);
-            String url = controller.getUrl(clientId, "Google");
-            return "Please authorise aPAS to use your calendar\n" + url + "\n" + "Once done please proceed with below commands" +
-                    "\n\n" + "!event: To see your scheduled events\n" + "!add taskName hoursNeeded deadline(mm/dd/yyy) : To add new event with given details\n" +
-                    "!show: To display tasks you should perform today considering priority of all events";
+            if(controller.getUser().getToken().isEmpty()) {
+                String url = controller.getUrl(clientId, "Google");
+                return "Please authorise aPAS to use your calendar\n" + url + "\n" + "Once done please proceed with below commands" +
+                        "\n\n" + "!event: To see your scheduled events\n" + "!add taskName hoursNeeded deadline(mm/dd/yyy) : To add new event with given details\n" +
+                        "!show: To display tasks you should perform today considering priority of all events";
+            }
         }
 
         String[] commands =msg.split("\n");
