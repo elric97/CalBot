@@ -1,3 +1,7 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5528822.svg)](https://doi.org/10.5281/zenodo.5528822)
+[![Made with](https://img.shields.io/badge/Made%20with-Java-blue)](https://www.java.com/en/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
+[![Platform](https://img.shields.io/badge/platform-discord-blue)](https://discord.com/)
 # aPAS - A Personal Agile Scheduler
 Many companies use agile methodology for software development and manage everything from requirement gathering to product delivery smoothly, by following some good practices.
 Managing everyone's assignment using sprint model is very effective and gives the true picture of how much of assignment load someone has and how to further manage it.
