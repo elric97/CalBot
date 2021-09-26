@@ -1,3 +1,4 @@
+![example workflow](https://github.com/elric97/CalBot/actions/workflows/maven.yml/badge.svg)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5528822.svg)](https://doi.org/10.5281/zenodo.5528822)
 [![Made with](https://img.shields.io/badge/Made%20with-Java-blue)](https://www.java.com/en/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
