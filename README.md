@@ -40,7 +40,7 @@ Various developers. Please check [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE_
 
 ### If you are a front-end developer 💻
 Currently aPAS has been configured to work with Discord as the GUI but given the structure of the project it can be easily extended for other platforms such as
-* Telegram (add links probably!)
+* Telegram
 * WhatsApp
 * Facebook 
 
