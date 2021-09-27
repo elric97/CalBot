@@ -5,7 +5,10 @@ import com.se21.calbot.ClientManager.ClientManager;
 import com.se21.calbot.controllers.Controller;
 import com.se21.calbot.factories.clientFactory;
 import com.se21.calbot.model.User;
+import com.se21.calbot.repositories.TokensRepository;
 import discord4j.core.object.entity.Message;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -13,6 +16,8 @@ import reactor.core.publisher.Mono;
 import static com.se21.calbot.enums.Enums.operationType.Add;
 import static com.se21.calbot.enums.Enums.operationType.Retrieve;
 
+@Getter
+@Setter
 @Service
 public abstract class MessageListener {
     ClientManager clientObj;
@@ -22,7 +27,7 @@ public abstract class MessageListener {
     @Autowired
     clientFactory clientfactory;
     @Autowired
-    User user;
+    TokensRepository tokensRepository;
 
     public Mono<Void> processCommand(Message eventMessage) {
 
@@ -36,9 +41,9 @@ public abstract class MessageListener {
         if(eventMessage.getAuthor().map(user -> user.isBot()).orElse(false))
             return Mono.empty().then();
 
-        //No need to make db entry just yet
-        user.setDiscordId(author.getUsername()+author.getDiscriminator());
+
         clientObj = clientfactory.getClient("Discord");
+        clientObj.setClientId(author.getUsername()+author.getDiscriminator());
         String response = clientObj.processInput(eventMessage.getContent());
         return Mono.just(eventMessage)
                 .flatMap(Message::getChannel)
