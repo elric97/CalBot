@@ -5,7 +5,8 @@
 [![Platform](https://img.shields.io/badge/platform-discord-blue)](https://discord.com/)
 [![GitHub issues open](https://img.shields.io/github/issues/elric97/CalBot)](https://github.com/elric97/CalBot/issues)
 [![GitHub issues closed](https://img.shields.io/github/issues-closed/elric97/CalBot?color=magenta)](https://github.com/elric97/CalBot/issues)
-# aPAS - A Personal Agile Scheduler
+# aPAS
+![image](https://raw.githubusercontent.com/elric97/CalBot/master/Design/Logo.png)
 
 ## Introduction 😁
 * Have you ever wondered how easy it would be if there was someone to help you manage your mundane tasks in a better way? If you have then aPAS has got you covered!
