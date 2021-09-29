@@ -24,19 +24,19 @@ https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-
 
 ## Technologies
 <p>
-  <a href="https://www.java.com/en/" target="_blank"> 
+  <a href="https://www.java.com/en/"> 
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" width="50" height="50"/>
   </a>
-  <a href="https://spring.io/" target="_blank"> 
+  <a href="https://spring.io/"> 
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="spring" width="50" height="50"/>
   </a>
-  <a href="https://www.postgresql.org/" target="_blank"> 
+  <a href="https://www.postgresql.org/"> 
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="postgresql" width="50" height="50"/>
   </a>
-  <a href="https://www.docker.com/" target="_blank">
+  <a href="https://www.docker.com/">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" height="50" width="50">
   </a>
-  <a href="https://www.docker.com/" target="_blank">
+  <a href="https://maven.apache.org/">
     <img src="https://symbols.getvecta.com/stencil_74/18_apache-maven-icon.2a3ad94f03.svg" alt="maven" height="50" width="50">
   </a>
   <a href="https://discord4j.com/">
