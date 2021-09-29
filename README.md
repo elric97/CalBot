@@ -43,6 +43,9 @@ https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-
 There are multiple dimensions to this project catering to the interests of
 Various developers. Please check [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for contributing rules
 
+### Finish the work pending 
+* Add more CRUD operations to give more flexibility to user to delete and edit events via chatbot
+
 ### If you are a front-end developer 💻
 Currently aPAS has been configured to work with Discord as the GUI but given the structure of the project it can be easily extended for other platforms such as
 * Telegram
