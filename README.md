@@ -14,6 +14,9 @@
 * Do you ever want to find time for Leetcode and workouts amidst a very busy week full of assignments but just can’t? Our discord bot will look into your existing schedule and will further help you handle such unscheduled tasks. 
 * How will it do that? It will show you the exact amount of workload pending on your plate and time left before the deadline. This makes scheduling such unscheduled events very easy. 
 
+#### Here's a short introduction video:
+https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-9886-9b1a1e577254.mp4
+
 
 Architecture:
 ![image](https://user-images.githubusercontent.com/16212546/133550649-23125bf6-476e-435e-8f16-42a777d034fb.png)
