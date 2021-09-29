@@ -19,8 +19,8 @@
 https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-9886-9b1a1e577254.mp4
 
 
-#### Architecture:
-![image](https://user-images.githubusercontent.com/16212546/133550649-23125bf6-476e-435e-8f16-42a777d034fb.png)
+### Class Diagram: 
+![image](https://user-images.githubusercontent.com/16212546/133550846-e297d9f2-9907-4174-b1ec-d261a8b1353f.png)
 
 ## Technologies
 <p>
@@ -65,7 +65,7 @@ docker build . -t 'image-name' //Don't forget the dot
 docker run -dp 8080:8080 'image-name' //This will start app on port on 8080
 ````
 
-##Package Document
+##Package Document 
 <p>
   <a href="https://elric97.github.io/CalBot/">Follow this link for document </a>
 </p>
