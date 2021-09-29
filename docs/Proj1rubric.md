@@ -21,7 +21,7 @@
 | test cases are routinely executed|[github actions](https://github.com/elric97/CalBot/actions)|
 | the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|[Contributing.md](https://github.com/elric97/CalBot/blob/master/CONTRIBUTING.md)
 | issues are discussed before they are closed|even if you discuss in slack, need a summary statement here|
-| Chat channel: exists|yes on Whatsapp
+| Chat channel: exists|yes on Whatsapp and discussion happened on [zoom](https://drive.google.com/drive/folders/1WDJOIk4b3AVTu5J8aKBeu8kWjDNH2krE)
 | test cases:.a large proportion of the issues related to handling failing cases.|if a test case fails, open an issue and fix it|
 | evidence that the whole team is using the same tools: everyone can get to all tools and files|
 | evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|
