@@ -5,7 +5,8 @@
 [![Platform](https://img.shields.io/badge/platform-discord-blue)](https://discord.com/)
 [![GitHub issues open](https://img.shields.io/github/issues/elric97/CalBot)](https://github.com/elric97/CalBot/issues)
 [![GitHub issues closed](https://img.shields.io/github/issues-closed/elric97/CalBot?color=magenta)](https://github.com/elric97/CalBot/issues)
-# aPAS - A Personal Agile Scheduler
+# aPAS
+![image](https://raw.githubusercontent.com/elric97/CalBot/master/Design/Logo.png)
 
 ## Introduction 😁
 * Have you ever wondered how easy it would be if there was someone to help you manage your mundane tasks in a better way? If you have then aPAS has got you covered!
@@ -21,23 +22,53 @@ https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-
 #### Architecture:
 ![image](https://user-images.githubusercontent.com/16212546/133550649-23125bf6-476e-435e-8f16-42a777d034fb.png)
 
-#### Initial class diagram for product(considering future prospects):
-![image](https://user-images.githubusercontent.com/16212546/133550846-e297d9f2-9907-4174-b1ec-d261a8b1353f.png)
+## Technologies
+<p>
+  <a href="https://www.java.com/en/"> 
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" width="50" height="50"/>
+  </a>
+  <a href="https://spring.io/"> 
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="spring" width="50" height="50"/>
+  </a>
+  <a href="https://www.postgresql.org/"> 
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="postgresql" width="50" height="50"/>
+  </a>
+  <a href="https://www.docker.com/">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" height="50" width="50">
+  </a>
+  <a href="https://maven.apache.org/">
+    <img src="https://symbols.getvecta.com/stencil_74/18_apache-maven-icon.2a3ad94f03.svg" alt="maven" height="50" width="50">
+  </a>
+  <a href="https://discord4j.com/">
+    <img src="https://raw.githubusercontent.com/Discord4J/discord4j-web/master/public/logo.svg?sanitize=true" alt="Discord4J" height="50" width="50"/>
+  </a>
+</p> 
 
-## Getting started 
-* Java8 
-* PostgreSQL - We have used [Postgress](https://www.postgresql.org) as our database, it can be set locally as well as on cloud
+Java\
+Spring Boot\
+PostgreSQL\
+Docker\
+Maven\
+Discord4J
+
+## Getting started
+* Java8
+* IntelliJ or Eclipse (IntelliJ preferred)
+* PostgreSQL - We have used [Postgress](https://www.postgresql.org) as our database, it can be set locally as well as on cloud. You just need to start it on your localhost it will automatically create tables required.
 * Google Cloud Platform - We used Google calendar API by creating a project on [GCP](https://developers.google.com/workspace/guides/create-project), Check [Quickstart](https://developers.google.com/calendar/api/quickstart/java) for setting up Google calendar APIs. The ./Credentials.json of the project is required for authenticating the user.
 * Discord Developer Application -We created a [Discord Developer profile](https://discord.com/developers/docs/intro) for configuring a Discord BOT 
 * Environment variables can be found at [applications.properties](/src/main/resources/application.properties)
 * Credentials need to be updated at [credentials.json](/src/main/resources/credentials.json)
+* To start project using docker run the following command in main directory
+````
+docker build . -t 'image-name' //Don't forget the dot
+docker run -dp 8080:8080 'image-name' //This will start app on port on 8080
+````
 
-## Using Docker
-1. navigate to the project directory with the Dockerfile
-2. docker build -t my-app .
-3. docker run -p 5000:5000 my-app
-4. open browser and enter http://localhost:5000/
-
+##Package Document
+<p>
+  <a href="https://elric97.github.io/CalBot/">Follow this link for document </a>
+</p>
 
 ## Future Scope 🐾
 There are multiple dimensions to this project catering to the interests of
