@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * You can use it to check if your application is up or not
+ * try http://localhost:8080/ping 
+ */
 @RestController
 @CrossOrigin(origins="*")
 public class PingController {

@@ -17,6 +17,11 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 
+/**
+ * This is main controller class for whole aPAS. In block diagram of architecture, you can see this
+ * class at the center. It serves various purposes, but major functionality is to provide some
+ * algorithm to suggest most optimal activities to be done by user.
+ */
 @Log
 @Getter
 @Setter
@@ -35,6 +40,11 @@ public class Controller {
     TokensRepository tokensRepository;
     User user;
 
+    /**
+     * It will create a new entry in db for current user if it already doesn't exist.
+     * Else it will retrieve all existing data from db.
+     * @param discordId
+     */
     public void initDb(String discordId)
     {
         user = tokensRepository.findById(discordId).orElse(null);
@@ -48,15 +58,13 @@ public class Controller {
         calObj = calendarFactory.getCalendar("Google");
         calObj.setUserVariable();
     }
-    public void getCalToken()
-    {
 
-    }
-    public void addCalToken()
-    {
-
-    }
-
+    /**
+     * This function contains the logic to re-arrange all events on the basis of priority and
+     * suggest most optimal ones for today/week.
+     * @return
+     * @throws Exception
+     */
     //TODO: Change return type to JSON objects
     public String arrangeEvents() throws Exception {
         JSONArray scheduledEventList = calObj.retrieveEvents("primary").getJSONArray("items");
@@ -84,6 +92,13 @@ public class Controller {
         return events;
     }
 
+    /**
+     * This is single interface function for clientManager layer to directly call some
+     * CRUD operation for calendar layer.
+     * @param opType Add, delete, Retrieve.......etc.
+     * @param msgParam the user given parameters
+     * @return Output received after operation execution
+     */
     //Todo return type need to be changed to Json objects to make controller and client independent
     @SneakyThrows
     public String dataOperation(Enums.operationType opType, String ... msgParam){
@@ -137,6 +152,13 @@ public class Controller {
         }
         return "Failure!";
     }
+
+    /**
+     * To get URL for OAUTH 2.0
+     * @param discordId
+     * @param calType
+     * @return URL
+     */
     public String getUrl(String discordId, String calType) {
         try {
             return calendarFactory.getCalendar(calType).authenticate(discordId);

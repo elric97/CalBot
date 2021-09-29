@@ -1,16 +1,19 @@
 package com.se21.calbot.ClientManager;
 
 import com.se21.calbot.controllers.Controller;
+import com.se21.calbot.interfaces.ClientManager;
 import com.se21.calbot.model.User;
-import com.se21.calbot.repositories.TokensRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.se21.calbot.enums.Enums.operationType.*;
 
 
+/**
+ * Discord class manages implementation specific to discord users
+ */
 @Service
-public class Discord implements ClientManager{
+public class Discord implements ClientManager {
 
     String clientId;
     User user;

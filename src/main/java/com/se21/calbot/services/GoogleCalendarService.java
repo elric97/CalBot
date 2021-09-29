@@ -41,6 +41,10 @@ import java.util.List;
 import static com.se21.calbot.enums.Enums.calApiResponse.Failure;
 import static com.se21.calbot.enums.Enums.calApiResponse.Success;
 
+/**
+ * Google Calendar operations are managed through this class.
+ * It implements all functionalities of Calendar interface.
+ */
 @Service
 @Log
 public class GoogleCalendarService implements Calendar {
@@ -58,6 +62,7 @@ public class GoogleCalendarService implements Calendar {
     private GoogleClientSecrets clientSecrets;
 
     //This is temporary hack, I believe we need one more common authenticator block or something
+    @Override
     public void setUserVariable()
     {
         user = controller.getUser();

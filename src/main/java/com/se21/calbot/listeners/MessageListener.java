@@ -1,10 +1,8 @@
 package com.se21.calbot.listeners;
 
-import ch.qos.logback.core.net.SMTPAppenderBase;
-import com.se21.calbot.ClientManager.ClientManager;
+import com.se21.calbot.interfaces.ClientManager;
 import com.se21.calbot.controllers.Controller;
 import com.se21.calbot.factories.clientFactory;
-import com.se21.calbot.model.User;
 import com.se21.calbot.repositories.TokensRepository;
 import discord4j.core.object.entity.Message;
 import lombok.Getter;
@@ -13,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import static com.se21.calbot.enums.Enums.operationType.Add;
-import static com.se21.calbot.enums.Enums.operationType.Retrieve;
-
+/**
+ * MessageListener manages the listener facility for any event from discord bot.
+ */
 @Getter
 @Setter
 @Service
@@ -29,6 +27,12 @@ public abstract class MessageListener {
     @Autowired
     TokensRepository tokensRepository;
 
+    /**
+     * If any event happens in chatBot, it will call processCommand. Further developer can filter
+     * the message to be processed or ignored.
+     * @param eventMessage activity in chatbot
+     * @return response from bot to user
+     */
     public Mono<Void> processCommand(Message eventMessage) {
 
         Mono<String> cmd = Mono.just(eventMessage)
