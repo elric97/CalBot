@@ -12,6 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Database schema
+ */
 @Entity
 @Table(name = "Tokens")
 @JsonSerialize
