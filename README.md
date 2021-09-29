@@ -50,6 +50,7 @@ PostgreSQL\
 Docker\
 Maven\
 Discord4J
+
 ## Getting started
 * Java8
 * IntelliJ or Eclipse (IntelliJ preferred)
@@ -61,9 +62,13 @@ Discord4J
 * To start project using docker run the following command in main directory
 ````
 docker build . -t 'image-name' //Don't forget the dot
-docker run -dp 8080:8080 'image-name //This will start app on port on 8080
+docker run -dp 8080:8080 'image-name' //This will start app on port on 8080
 ````
 
+##Package Document
+<p>
+  <a href="https://elric97.github.io/CalBot/">Follow this link for document </a>
+</p>
 
 ## Future Scope 🐾
 There are multiple dimensions to this project catering to the interests of
