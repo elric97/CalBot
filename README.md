@@ -6,14 +6,22 @@
 [![GitHub issues open](https://img.shields.io/github/issues/elric97/CalBot)](https://github.com/elric97/CalBot/issues)
 [![GitHub issues closed](https://img.shields.io/github/issues-closed/elric97/CalBot?color=magenta)](https://github.com/elric97/CalBot/issues)
 # aPAS
-![image](https://raw.githubusercontent.com/elric97/CalBot/master/Design/Logo.png)
+<p align = center>
+  <a href="">
+    <img src="https://raw.githubusercontent.com/elric97/CalBot/master/Design/Logo.png" alt="Logo" height="400" width="800"/>
+  </a>
+</p>
 
 ## Introduction 😁
-* Have you ever wondered how easy it would be if there was someone to help you manage your mundane tasks in a better way? If you have then aPAS has got you covered!
-* Today, many companies use agile methodology for software development. What has proven to be the most effective is the use of a sprint model. 
-* This model gives the true picture of how much of an assignment load someone has and how to further manage it. We bring to you exactly that to manage your everyday tasks with our discord bot.
-* Do you ever want to find time for Leetcode and workouts amidst a very busy week full of assignments but just can’t? Our discord bot will look into your existing schedule and will further help you handle such unscheduled tasks. 
-* How will it do that? It will show you the exact amount of workload pending on your plate and time left before the deadline. This makes scheduling such unscheduled events very easy. 
+Do you feel overwhelmed sometimes when you have alot of things to do?
+
+"Achieving a small incremental goal is perceived as easier -- and more satisfying -- than maintaining the status quo" --Source
+
+The agile sprint model follows something on similar lines to this above statement. So following this, we thought of bringing agile sprint model to personal life.
+aPAS takes the [unscheduled events](https://github.com/elric97/CalBot/wiki/Algorithm-to-compute-tasks-for-each-day) at beginning of each week as input and divide the task on user's plate on daily basis, by which he/she can easily able to finish tasks just before deadlines and it won't be overwhelming. 
+
+This model gives the true picture of how much of an assignment load someone has and how to further manage it. We bring to you exactly that to manage your everyday tasks with our discord bot.
+Do you ever want to find time for Leetcode and workouts amidst a very busy week full of assignments but just can’t? Our discord bot will show you most optimised things to do each day to complete them and still find some time for unplanned activities.
 
 #### Here's a short introduction video:
 https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-9886-9b1a1e577254.mp4
@@ -32,22 +40,22 @@ https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-
 ## Technologies
 <p>
   <a href="https://www.java.com/en/"> 
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" width="50" height="50"/>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" width="35" height="35"/>
   </a>
   <a href="https://spring.io/"> 
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="spring" width="50" height="50"/>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="spring" width="35" height="35"/>
   </a>
   <a href="https://www.postgresql.org/"> 
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="postgresql" width="50" height="50"/>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="postgresql" width="35" height="35"/>
   </a>
   <a href="https://www.docker.com/">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" height="50" width="50">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" height="35" width="35">
   </a>
   <a href="https://maven.apache.org/">
-    <img src="https://symbols.getvecta.com/stencil_74/18_apache-maven-icon.2a3ad94f03.svg" alt="maven" height="50" width="50">
+    <img src="https://symbols.getvecta.com/stencil_74/18_apache-maven-icon.2a3ad94f03.svg" alt="maven" height="35" width="35">
   </a>
   <a href="https://discord4j.com/">
-    <img src="https://raw.githubusercontent.com/Discord4J/discord4j-web/master/public/logo.svg?sanitize=true" alt="Discord4J" height="50" width="50"/>
+    <img src="https://raw.githubusercontent.com/Discord4J/discord4j-web/master/public/logo.svg?sanitize=true" alt="Discord4J" height="35" width="35"/>
   </a>
 </p> 
 
@@ -71,14 +79,16 @@ Discord4J
 docker build . -t 'image-name' //Don't forget the dot
 docker run -dp 8080:8080 'image-name' //This will start app on port on 8080
 ````
-* [Developer Guide] (https://elric97.github.io/CalBot/) 
+* [Developer Guide](https://elric97.github.io/CalBot/) 
 
 ## Future Scope 🐾
 There are multiple dimensions to this project catering to the interests of
 Various developers. Please check [CONTRIBUTING.md](./CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for contributing rules
 
-### Finish the work pending 
-* Add more CRUD operations to give more flexibility to user to delete and edit events via chatbot
+### Finish the pending work
+* Implement the [Algorithm](https://github.com/elric97/CalBot/wiki/Algorithm-to-compute-tasks-for-each-day) in class [Controller](https://github.com/elric97/CalBot/blob/master/src/main/java/com/se21/calbot/controllers/Controller.java)(function: [arrangeEvents](https://github.com/elric97/CalBot/blob/master/src/main/java/com/se21/calbot/controllers/Controller.java#:~:text=to%20JSON%20objects-,public%20String%20arrangeEvents()%20throws%20Exception%20%7B,%7D,-/**)).
+* Add more CRUD operations to give more flexibility to user to delete and edit events via chatbot.
+
 
 ### If you are a front-end developer 💻
 Currently aPAS has been configured to work with Discord as the GUI but given the structure of the project it can be easily extended for other platforms such as
