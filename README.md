@@ -24,7 +24,7 @@ This model gives the true picture of how much of an assignment load someone has 
 Do you ever want to find time for Leetcode and workouts amidst a very busy week full of assignments but just can’t? Our discord bot will show you most optimised things to do each day to complete them and still find some time for unplanned activities.
 
 #### Here's a short introduction video:
-https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-9886-9b1a1e577254.mp4
+https://user-images.githubusercontent.com/55187770/135385469-924f4ded-4768-4bac-9a7b-daf0bbff46e1.mp4
 
 #### Quick read
 [Project Vision](https://github.com/elric97/CalBot/wiki/Project-vision)
