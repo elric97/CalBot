@@ -35,7 +35,11 @@ https://user-images.githubusercontent.com/55187770/135385469-924f4ded-4768-4bac-
 
 [Developer's Guide](https://elric97.github.io/CalBot/)
 
-
+## Commands
+* **!oauth** - To get the authentication link for calendar
+* **!event** - To display a list of upcoming events on your calendar
+* **!add <!one word title> <!deadline mm/dd/yyyy> <!hours needed>** - To add events to your calendar
+* **!show**(still in development) - To arrange events in an optimised way according to the algo discussed in wiki
 
 ## Technologies
 <p>
@@ -66,15 +70,19 @@ Docker\
 Maven\
 Discord4J
 
+## Commands
+
+
 ## Getting started
-* Java8
-* IntelliJ or Eclipse (IntelliJ preferred)
-* PostgreSQL - We have used [Postgress](https://www.postgresql.org) as our database, it can be set locally as well as on cloud. You just need to start it on your localhost it will automatically create tables required.
+* Make sure you have the following things installed
+  * Java 8
+  * IntelliJ or Eclipse
+  * PostgreSQL
+  * Docker (optional)
 * Google Cloud Platform - We used Google calendar API by creating a project on [GCP](https://developers.google.com/workspace/guides/create-project), Check [Quickstart](https://developers.google.com/calendar/api/quickstart/java) for setting up Google calendar APIs. The ./Credentials.json of the project is required for authenticating the user.
 * Discord Developer Application -We created a [Discord Developer profile](https://discord.com/developers/docs/intro) for configuring a Discord BOT 
-* Environment variables can be found at [applications.properties](/src/main/resources/application.properties)
-* Credentials need to be updated at [credentials.json](/src/main/resources/credentials.json)
-* To start project using docker run the following command in main directory
+* Environment variables can be found at [applications.properties](/src/main/resources/application.properties) and Credentials need to be updated at [credentials.json](/src/main/resources/credentials.json)
+* (Optional) To start project using docker run the following command in main directory
 ````
 docker build . -t 'image-name' //Don't forget the dot
 docker run -dp 8080:8080 'image-name' //This will start app on port on 8080
