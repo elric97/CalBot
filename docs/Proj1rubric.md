@@ -3,7 +3,7 @@
 |workload is spread over the whole team (one team member is often Xtimes more productive than the others but nevertheless, here is a track record that everyone is contributing a lot)|[contributions](https://github.com/elric97/CalBot/graphs/contributors)|
 | Number of commits|[commits](https://github.com/elric97/CalBot/pulse)|
 | Number of commits: by different people|[commits](https://github.com/elric97/CalBot/pulse)|
-| Issues reports: there are **many**|
+| Issues reports: there are **many**|[Issues](https://github.com/elric97/CalBot/issues)
 |  issues are being  closed|[closed Issues](https://github.com/elric97/CalBot/issues?q=is%3Aissue+is%3Aclosed)|
 | DOI badge: exists |[DOI badge](https://github.com/elric97/CalBot/blob/master/CITATION.md)|
 |Docs: doco generated , format not ugly |[docs](https://elric97.github.io/CalBot/)|
