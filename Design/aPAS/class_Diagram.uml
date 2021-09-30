@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_4OMkYBKsEeyjGIQBNoKd1g" name="aPAS">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_4OMkYBKsEeyjGIQBNoKd1g" name="aPAS" visibility="package">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_4SQlABKsEeyjGIQBNoKd1g">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Interface" xmi:id="_GlxGkBaBEeypgdK-BTWx7A" name="Calendar">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_kmePMBaDEeypgdK-BTWx7A" name="accessToken">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_mPuE8BaDEeypgdK-BTWx7A" name="refreshToken">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Y0MJYBaCEeypgdK-BTWx7A" name="authenticate"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_cN5QIBaCEeypgdK-BTWx7A" name="retrieveEvents"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_k9groBaCEeypgdK-BTWx7A" name="updateEvent"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_mZuyABaCEeypgdK-BTWx7A" name="addEvent"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_n3284BaCEeypgdK-BTWx7A" name="deleteEvent"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_sWE0oBaCEeypgdK-BTWx7A" name="createNewUnscheduledCalendar"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CTvDoCGYEeyXaIuguDyBBQ" name="saveAccessToken">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CTvDoSGYEeyXaIuguDyBBQ" name="code">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CTvDoiGYEeyXaIuguDyBBQ" name="Id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_J_nXQBaBEeypgdK-BTWx7A" name="Google Calendar" visibility="public">
+  <packagedElement xmi:type="uml:Class" xmi:id="_J_nXQBaBEeypgdK-BTWx7A" name="GoogleCalendarService" visibility="public">
     <nestedClassifier xmi:type="uml:Class" xmi:id="_9NvqcBaEEeypgdK-BTWx7A" name="Google Calendar" visibility="public"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_0ts8ABaEEeypgdK-BTWx7A" client="_J_nXQBaBEeypgdK-BTWx7A" supplier="_GlxGkBaBEeypgdK-BTWx7A"/>
@@ -26,12 +28,6 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_FYuu4BaFEeypgdK-BTWx7A" name="Samsung Calendar" visibility="public"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_LFrDkBaFEeypgdK-BTWx7A" client="_FYuu4BaFEeypgdK-BTWx7A" supplier="_GlxGkBaBEeypgdK-BTWx7A"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_X-MOIBaFEeypgdK-BTWx7A" name="clientManager">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_iFYHQBaKEeypgdK-BTWx7A" name="id">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_mTGvIBaOEeypgdK-BTWx7A" name="clientId">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
-    </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_nEMnIBaJEeypgdK-BTWx7A" name="update"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_oS5O4BaJEeypgdK-BTWx7A" name="add"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_qf1AgBaJEeypgdK-BTWx7A" name="delete"/>
@@ -73,7 +69,7 @@
   <packagedElement xmi:type="uml:Realization" xmi:id="_2fLR8BaKEeypgdK-BTWx7A" client="_kabsYBaFEeypgdK-BTWx7A" supplier="_X-MOIBaFEeypgdK-BTWx7A"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_3iV_IBaKEeypgdK-BTWx7A" client="_lKbl8BaFEeypgdK-BTWx7A" supplier="_X-MOIBaFEeypgdK-BTWx7A"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_5Rr10BaKEeypgdK-BTWx7A" client="_l_pWsBaFEeypgdK-BTWx7A" supplier="_X-MOIBaFEeypgdK-BTWx7A"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_d3xB4BaLEeypgdK-BTWx7A" name="Controller">
+  <packagedElement xmi:type="uml:Class" xmi:id="_d3xB4BaLEeypgdK-BTWx7A" name="Controller" visibility="package">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_pU5XEBaMEeypgdK-BTWx7A" name="clientId">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
@@ -90,9 +86,10 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M97qEBajEeypgdK-BTWx7A"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M97qERajEeypgdK-BTWx7A" value="1"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_m-hmACGXEeyXaIuguDyBBQ" name="calObj" type="_GlxGkBaBEeypgdK-BTWx7A"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_x17NYCGXEeyXaIuguDyBBQ" name="calendarFactory" type="_VueFYCGVEeyXaIuguDyBBQ"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_mzhb8BaLEeypgdK-BTWx7A" name="initDb"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_pkqG0BaLEeypgdK-BTWx7A" name="getCalToken"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_r4bgQBaLEeypgdK-BTWx7A" name="addCalToken"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_pkqG0BaLEeypgdK-BTWx7A" name="getUrl"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_6IRqIBaLEeypgdK-BTWx7A" name="arrangeEvents"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_hO6HYBaMEeypgdK-BTWx7A" name="dataOperation"/>
   </packagedElement>
@@ -125,5 +122,91 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_M97DABajEeypgdK-BTWx7A" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_M97qEhajEeypgdK-BTWx7A" name="controller" type="_d3xB4BaLEeypgdK-BTWx7A" association="_M9504BajEeypgdK-BTWx7A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VueFYCGVEeyXaIuguDyBBQ" name="ClientFactory" visibility="package">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_qAvEsCGVEeyXaIuguDyBBQ" name="discordcleint" type="_jP_SgBaFEeypgdK-BTWx7A"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_bLtUsiGWEeyXaIuguDyBBQ" name="discord" type="_jP_SgBaFEeypgdK-BTWx7A" association="_bLstoCGWEeyXaIuguDyBBQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bLtUsyGWEeyXaIuguDyBBQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bLvJ4CGWEeyXaIuguDyBBQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_eb5TEiGWEeyXaIuguDyBBQ" name="telegram" type="_lKbl8BaFEeypgdK-BTWx7A" association="_eb4sACGWEeyXaIuguDyBBQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eb5TEyGWEeyXaIuguDyBBQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eb56ICGWEeyXaIuguDyBBQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_fWLKAyGWEeyXaIuguDyBBQ" name="alexa" type="_l_pWsBaFEeypgdK-BTWx7A" association="_fWLKACGWEeyXaIuguDyBBQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fWLxECGWEeyXaIuguDyBBQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fWLxESGWEeyXaIuguDyBBQ" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_JGiCkCGXEeyXaIuguDyBBQ" name="getClient">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JGiCkSGXEeyXaIuguDyBBQ" name="channel">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_bLstoCGWEeyXaIuguDyBBQ" memberEnd="_bLtUsiGWEeyXaIuguDyBBQ _bLwYACGWEeyXaIuguDyBBQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bLtUsCGWEeyXaIuguDyBBQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bLtUsSGWEeyXaIuguDyBBQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bLwYACGWEeyXaIuguDyBBQ" name="create" type="_VueFYCGVEeyXaIuguDyBBQ" association="_bLstoCGWEeyXaIuguDyBBQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_c6FiECGWEeyXaIuguDyBBQ" memberEnd="_c6GJIiGWEeyXaIuguDyBBQ _c6GwMSGWEeyXaIuguDyBBQ" navigableOwnedEnd="_c6GJIiGWEeyXaIuguDyBBQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_c6GJICGWEeyXaIuguDyBBQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_c6GJISGWEeyXaIuguDyBBQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_c6GJIiGWEeyXaIuguDyBBQ" name="slack" type="_kabsYBaFEeypgdK-BTWx7A" association="_c6FiECGWEeyXaIuguDyBBQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c6GJIyGWEeyXaIuguDyBBQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c6GwMCGWEeyXaIuguDyBBQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_c6GwMSGWEeyXaIuguDyBBQ" type="_VueFYCGVEeyXaIuguDyBBQ" association="_c6FiECGWEeyXaIuguDyBBQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_eb4sACGWEeyXaIuguDyBBQ" memberEnd="_eb5TEiGWEeyXaIuguDyBBQ _eb56ISGWEeyXaIuguDyBBQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eb5TECGWEeyXaIuguDyBBQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eb5TESGWEeyXaIuguDyBBQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_eb56ISGWEeyXaIuguDyBBQ" name="create" type="_VueFYCGVEeyXaIuguDyBBQ" association="_eb4sACGWEeyXaIuguDyBBQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_fWLKACGWEeyXaIuguDyBBQ" memberEnd="_fWLKAyGWEeyXaIuguDyBBQ _fWLxEiGWEeyXaIuguDyBBQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fWLKASGWEeyXaIuguDyBBQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fWLKAiGWEeyXaIuguDyBBQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_fWLxEiGWEeyXaIuguDyBBQ" name="create" type="_VueFYCGVEeyXaIuguDyBBQ" association="_fWLKACGWEeyXaIuguDyBBQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_sFc5ACGWEeyXaIuguDyBBQ" name="CalendarFactory">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5bBL8CGWEeyXaIuguDyBBQ" name="googleCalendarService " type="_J_nXQBaBEeypgdK-BTWx7A"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_aqzxoCGXEeyXaIuguDyBBQ" name="googlecalendarservice" type="_J_nXQBaBEeypgdK-BTWx7A" association="_aqyjgCGXEeyXaIuguDyBBQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aqzxoSGXEeyXaIuguDyBBQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aqzxoiGXEeyXaIuguDyBBQ" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_BBhqUCGXEeyXaIuguDyBBQ" name="getCalendar">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_BBhqUSGXEeyXaIuguDyBBQ" name="channel">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_aqyjgCGXEeyXaIuguDyBBQ" memberEnd="_aqzxoCGXEeyXaIuguDyBBQ _aqzxoyGXEeyXaIuguDyBBQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aqzKkCGXEeyXaIuguDyBBQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aqzKkSGXEeyXaIuguDyBBQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_aqzxoyGXEeyXaIuguDyBBQ" name="calendarfactory" type="_sFc5ACGWEeyXaIuguDyBBQ" association="_aqyjgCGXEeyXaIuguDyBBQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_bP8fACGXEeyXaIuguDyBBQ" memberEnd="_bP9GEiGXEeyXaIuguDyBBQ _bP9GFSGXEeyXaIuguDyBBQ" navigableOwnedEnd="_bP9GEiGXEeyXaIuguDyBBQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bP9GECGXEeyXaIuguDyBBQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bP9GESGXEeyXaIuguDyBBQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bP9GEiGXEeyXaIuguDyBBQ" name="apple calendar" type="_9YlogBaEEeypgdK-BTWx7A" association="_bP8fACGXEeyXaIuguDyBBQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bP9GEyGXEeyXaIuguDyBBQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bP9GFCGXEeyXaIuguDyBBQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bP9GFSGXEeyXaIuguDyBBQ" type="_aqyjgCGXEeyXaIuguDyBBQ" association="_bP8fACGXEeyXaIuguDyBBQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_crBV4CGXEeyXaIuguDyBBQ" memberEnd="_crB88SGXEeyXaIuguDyBBQ _crB89CGXEeyXaIuguDyBBQ" navigableOwnedEnd="_crB88SGXEeyXaIuguDyBBQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_crBV4SGXEeyXaIuguDyBBQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_crB88CGXEeyXaIuguDyBBQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_crB88SGXEeyXaIuguDyBBQ" name="samsung calendar" type="_FYuu4BaFEeypgdK-BTWx7A" association="_crBV4CGXEeyXaIuguDyBBQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_crB88iGXEeyXaIuguDyBBQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_crB88yGXEeyXaIuguDyBBQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_crB89CGXEeyXaIuguDyBBQ" type="_sFc5ACGWEeyXaIuguDyBBQ" association="_crBV4CGXEeyXaIuguDyBBQ"/>
   </packagedElement>
 </uml:Model>
