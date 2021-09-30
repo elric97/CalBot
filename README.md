@@ -18,9 +18,16 @@
 #### Here's a short introduction video:
 https://user-images.githubusercontent.com/55187770/135184919-845304ad-91ee-4fb7-9886-9b1a1e577254.mp4
 
+#### Quick read
+[Project Vision](https://github.com/elric97/CalBot/wiki/Project-vision)
 
-### Class Diagram: 
-![image](https://user-images.githubusercontent.com/16212546/133550846-e297d9f2-9907-4174-b1ec-d261a8b1353f.png)
+[Algorithm](https://github.com/elric97/CalBot/wiki/Algorithm-to-compute-tasks-for-each-day)
+
+[Design Docs explained](https://github.com/elric97/CalBot/wiki/Design-Docs)
+
+[Developer's Guide](https://elric97.github.io/CalBot/)
+
+
 
 ## Technologies
 <p>
@@ -64,11 +71,7 @@ Discord4J
 docker build . -t 'image-name' //Don't forget the dot
 docker run -dp 8080:8080 'image-name' //This will start app on port on 8080
 ````
-
-##Package Document 
-<p>
-  <a href="https://elric97.github.io/CalBot/">Follow this link for document </a>
-</p>
+* [Developer Guide] (https://elric97.github.io/CalBot/) 
 
 ## Future Scope 🐾
 There are multiple dimensions to this project catering to the interests of
