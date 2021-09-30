@@ -15,7 +15,7 @@
 ## Introduction 😁
 Do you feel overwhelmed sometimes when you have alot of things to do?
 
-"Achieving a small incremental goal is perceived as easier -- and more satisfying -- than maintaining the status quo" --Source
+"Achieving a small incremental goal is perceived as easier -- and more satisfying -- than maintaining the status quo" --[Source](https://www.sciencedaily.com/releases/2018/11/181108142313.htm)
 
 The agile sprint model follows something on similar lines to this above statement. So following this, we thought of bringing agile sprint model to personal life.
 aPAS takes the [unscheduled events](https://github.com/elric97/CalBot/wiki/Algorithm-to-compute-tasks-for-each-day) at beginning of each week as input and divide the task on user's plate on daily basis, by which he/she can easily able to finish tasks just before deadlines and it won't be overwhelming. 
