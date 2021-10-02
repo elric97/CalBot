@@ -70,8 +70,6 @@ Docker\
 Maven\
 Discord4J
 
-## Commands
-
 
 ## Getting started
 * Make sure you have the following things installed
