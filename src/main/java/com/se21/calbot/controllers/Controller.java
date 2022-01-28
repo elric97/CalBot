@@ -3,17 +3,23 @@ import com.se21.calbot.enums.Enums;
 import com.se21.calbot.factories.CalendarFactory;
 import com.se21.calbot.interfaces.Calendar;
 import com.se21.calbot.model.User;
+import com.se21.calbot.model.events;
 import com.se21.calbot.repositories.TokensRepository;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import org.joda.time.DateTime;
+import org.joda.time.Duration;
 import org.json.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.se21.calbot.controllers.schedulerAlgo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -59,6 +65,7 @@ public class Controller {
         calObj.setUserVariable();
     }
 
+
     /**
      * This function contains the logic to re-arrange all events on the basis of priority and
      * suggest most optimal ones for today/week.
@@ -66,30 +73,38 @@ public class Controller {
      * @throws Exception
      */
     //TODO: Change return type to JSON objects
-    public String arrangeEvents() throws Exception {
-        JSONArray scheduledEventList = calObj.retrieveEvents("primary").getJSONArray("items");
-        JSONArray unScheduledEventList = calObj.retrieveEvents(this.user.getCalId()).getJSONArray("items");
+    public String arrangeEvents() {
+        JSONArray scheduledEventList = null;
+        JSONArray unScheduledEventList = null;
+        try {
+            scheduledEventList = calObj.retrieveEvents("primary").getJSONArray("items");
+            unScheduledEventList = calObj.retrieveEvents(this.user.getCalId()).getJSONArray("items");
+            List<events> scheduled = new ArrayList<events>(), unscheduled = new ArrayList<events>();
+            scheduled = schedulerAlgo.jsonToEventObjects(scheduledEventList, false);
+            unscheduled = schedulerAlgo.jsonToEventObjects(unScheduledEventList, true);
+            System.out.println(unScheduledEventList);
+            for (int i = 0; i < scheduled.size(); i++) {
 
-        //Filter events for this week
+                System.out.println(scheduled.get(i).title + scheduled.get(i).deadline);
+            }
+            for (int i = 0; i < unscheduled.size(); i++) {
 
+                System.out.println(unscheduled.get(i).title + unscheduled.get(i).deadline);
+            }
+            String suggestion = schedulerAlgo.createBuckets(scheduled, unscheduled);
+            if(suggestion == "")
+            {
+                return "Something is wrong!";
+            }
+            else
+            {
+                return suggestion;
+            }
+        } catch (Exception e) {
+            log.severe("Data read exception - " + e.getMessage());
 
-        //Make a list of all events
-
-        //Prioritise all unscheduled events
-
-
-        //Send the list to client to display
-        String events = "";
-        for (int i = 0; i < scheduledEventList.length(); i++) {
-            org.json.JSONObject jsonLineItem = scheduledEventList.getJSONObject(i);
-            events += jsonLineItem.getString("summary") + "    " + jsonLineItem.getJSONObject("start").getString("dateTime") + "\n";
         }
-        // Unscheduled events set in bot created aPAS calendar
-        for (int i = 0; i < unScheduledEventList.length(); i++) {
-            org.json.JSONObject jsonLineItem = unScheduledEventList.getJSONObject(i);
-            events += jsonLineItem.getString("summary") + "    " + jsonLineItem.getJSONObject("start").getString("dateTime") + "\n";
-        }
-        return events;
+        return "Try !Oauth, your auth token seems to be expired.";
     }
 
     /**
@@ -140,6 +155,8 @@ public class Controller {
                         org.json.JSONObject jsonLineItem = itemArray.getJSONObject(i);
                         events += jsonLineItem.getString("summary") + "    " + jsonLineItem.getJSONObject("start").getString("dateTime") + "\n";
                     }
+                    if(events == "")
+                        events = "Nothing to show!";
                     return events;
                 } catch (Exception e) {
                     log.severe("Google auth URL exception - " + e.getMessage());
@@ -150,7 +167,7 @@ public class Controller {
             default:
                 throw new IllegalStateException("Unexpected value: " + opType);
         }
-        return "Failure!";
+        return "Try !Oauth, your auth token seems to be expired.";
     }
 
     /**

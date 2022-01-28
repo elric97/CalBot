@@ -101,6 +101,7 @@ public class Discord implements ClientManager {
                 }
                 default:
                     System.out.println("Kuch to gadbad hai daya!");
+                    return "Sorry not supported command!";
             }
 
         }
