@@ -70,6 +70,7 @@ public class GoogleCalendarService implements Calendar {
     @Override
     public String authenticate(String discordId) {
 
+
         try {
             // Load client secrets.
             InputStream in = GoogleCalendarService.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
@@ -78,6 +79,7 @@ public class GoogleCalendarService implements Calendar {
             }
             final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
             clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+            String redirectUrl = clientSecrets.getWeb().getRedirectUris().get(0);
 
             // Build flow and trigger user authorization request.
             GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
@@ -85,7 +87,7 @@ public class GoogleCalendarService implements Calendar {
                     .setAccessType("offline")
                     .build();
 
-            return flow.newAuthorizationUrl().setRedirectUri("http://localhost:8080/test").setState(discordId).build();
+            return flow.newAuthorizationUrl().setRedirectUri(redirectUrl).setState(discordId).build();
         } catch (Exception e) {
             log.severe("Google auth URL exception - " + e.getMessage());
         }
@@ -131,7 +133,16 @@ public class GoogleCalendarService implements Calendar {
     @Override
     public org.json.JSONObject retrieveEvents(String calId) throws Exception {
         String access_token = user.getToken();
-        String url = "https://www.googleapis.com/calendar/v3/calendars/" + calId + "/events?maxResults=20&access_token=" + access_token;
+        //Filter events only for this week
+        DateTime obj = new DateTime();
+        String startDate = obj.now().toDateMidnight().toString();
+        String endDate = obj.withDayOfWeek(7).toDateMidnight().plusDays(1).toString();
+
+        System.out.println(endDate);
+        String url = "https://www.googleapis.com/calendar/v3/calendars/" + calId +
+                "/events?maxResults=20&access_token=" + access_token+"&timeMin="+ startDate+"&timeMax="+endDate;
+
+
         HttpGet request = new HttpGet(url);
         //Todo: Add a filter to get events from now until end of current week only
 
@@ -140,7 +151,7 @@ public class GoogleCalendarService implements Calendar {
             String content;
             if (entity != null) {
                 content = EntityUtils.toString(entity);
-                System.out.println(content);
+                //System.out.println(content);
                 return new org.json.JSONObject(content);
             }
         } catch (ClientProtocolException e) {
